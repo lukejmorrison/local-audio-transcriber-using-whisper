@@ -1,7 +1,15 @@
 # local-audio-transcriber-using-whisper
-*Audio Transcriber** is a Python script that uses the Whisper model to automatically transcribe audio files into text and SRT subtitles. 
 
 **Audio Transcriber** is a Python script that uses the Whisper model to automatically transcribe audio files into text and SRT subtitles. 
+
+## Table of Contents
+
+- [Installation Guide](#installation-guide)
+  - [Windows Users (Windows 10/11)](#windows-users-windows-1011)
+  - [Ubuntu Linux Users](#ubuntu-linux-users)
+- [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
+- [Script Metadata](#script-metadata)
 
 ## Installation Guide
 
@@ -40,17 +48,38 @@
      sudo apt install python3 python3-pip -y
      ```
 
-3. **Install Dependencies:**
-   - Use `pip` to install Python packages:
+#### Step 3: Install CUDA Drivers (for NVIDIA GPU users)
+
+E.g If you have an NVIDIA GPU like the GTX 1070 TI:
+
+1. **Install NVIDIA Graphics Drivers:**
+   
+   - Navigate to NVIDIA's website to download the latest drivers for your GPU model.
+   - Follow their instructions to install the drivers on your Windows system.
+
+3. **Install CUDA Toolkit:**
+   
+   - Download the CUDA Toolkit from NVIDIA's CUDA download page, ensuring you select the version compatible with your GPU and WSL setup.
+   - Follow the installation instructions provided by NVIDIA for WSL.
+   
+ 4. **Install and download CUDA-enabled PyTorch:**
+
      ```bash
-     pip3 install torch==1.10.0 torchaudio==0.10.0 pydub whisper
+      - pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
+      ```
+   - Replace cu126 with the CUDA version you have installed if different.
+   
+3. **Verify CUDA Installation:**
+   
+   - After installation, verify CUDA is recognized by running:
+     ```bash
+     nvidia-smi
      ```
-   - Note: Ensure you're using `pip3` to install packages for Python 3.
+   - This should display information about your GPU and CUDA version if installed correctly.
 
-### Ubuntu Linux Users
+5. Install NVIDIA GPU Drivers (for NVIDIA GPU users)
 
-#### Step 1: Install Python
+**Install NVIDIA Drivers:**
 
-1. **Update and Upgrade System:**
-   ```bash
-   sudo apt update && sudo apt upgrade -y
+```bash
+sudo ubuntu-drivers autoinstall
